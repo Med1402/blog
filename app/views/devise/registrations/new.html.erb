@@ -1,0 +1,42 @@
+<ul class="px-8 py-32  m-auto border-violet-200 h-full bg-violet-200 w-1/2 border-8">
+            <h2 class="text-2xl m-auto w-fit font-bold" >Create a new account</h2><br><br>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="field font-bold m-auto w-fit">
+                <%= f.label :username %><br />
+                <ul class="border-2 border-black font-bold m-auto w-fit">
+                  <%= f.text_field :username %>
+                </ul>
+              </div><br>
+
+              <div class="field font-bold m-auto w-fit">
+                <%= f.label :email %><br />
+                <ul class="border-2 border-black font-bold m-auto w-fit">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                </ul>
+              </div><br>
+
+              <div class="field font-bold m-auto w-fit">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <ul class="border-2 border-black font-bold m-auto w-fit">
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                </ul>
+              </div><br>
+
+              <div class="field font-bold m-auto w-fit">
+                <%= f.label :password_confirmation %><br />
+                <ul class="border-2 border-black font-bold m-auto w-fit">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                </ul>
+              </div><br>
+
+              <div class="actions bg-purple-300 rounded-full px-14 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+                <%=  f.submit "Sign up" %>
+              </div>
+            <% end %>
+            <%= render "devise/shared/links" %>
+</ul>

@@ -1,0 +1,13 @@
+<%= form_with model: [ @article, @article.comments.build ], local: true do |form| %>
+    <p class="w-fit m-auto break-words">
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p><br> 
+     <p class="text-xl mb-2  w-fit m-auto" >
+  <%= form.label :status %><br>
+  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </p><br>
+    <ul class="rounded-full px-3 py-1 text-sm font-semibold bg-purple-300 w-fit m-auto hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+      <%= form.submit %>
+    </ul>
+<% end %>

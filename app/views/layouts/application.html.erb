@@ -1,0 +1,16 @@
+<!DOCTYPE html class="h-full">
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="bg-purple-100 h-full">
+   <p class ="bg-green-300 m-auto w-1/2"><%= notice %></p>
+   <p class ="bg-red-300 alert m-auto w-1/2"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

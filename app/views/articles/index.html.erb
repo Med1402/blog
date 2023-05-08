@@ -1,0 +1,47 @@
+<p class="font-bold text-4xl mb-2 m-auto w-fit">Welcome to our website dear <%= current_user.username%> ! </p> <br>
+<ul class="bg-purple-300 rounded-full px-8 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+  <%= link_to "Manage Account", edit_user_registration_path %>
+</ul>
+<br>
+<ul id="list">
+    <li class="m-auto w-fit">
+        <video controls>
+            <source src="assets/img/1.mp4"  type="video/mp4">
+        </video>
+    </li>
+</ul>
+
+<ul class="bg-purple-300 rounded-full px-8 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+</ul>
+<br>
+
+<p class="text-2xl mb-6 mb-2 m-auto w-fit"> Create a new article here </p>
+<br>
+<ul class="bg-purple-300 rounded-full px-8 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+  <%= link_to "+ New Article", new_article_path %>
+</ul>
+<br><br>
+
+<p class="text-2xl mb-6 m-auto w-fit"> Or feel free to check one of our <%= Article.public_count %> articles. </p>
+
+<ul class=" bg-purple-100 grid gap-2 grid-cols-1 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-5  m-auto w-auto mr-4 ml-4 h-1/2">
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+      <li class="border-4 border-purple-300 rounded-lg bg-purple-300 jusitfy-center h-auto">
+        <p class="mt-3 m-auto w-fit rounded-md"><%= image_tag(article.image, style:"width:300;height:300px; border-radius: 40px;") if article.image.attached?%><br></p>
+        <p class="text-bkack font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-lg"> <%= link_to article.title, article %></p><br>
+        <p class="font-bold text-xl mb-2 w-full" > Owner : </p>
+        <h1 class="font-bold text-2xl mb-2  w-fit m-auto text-black-500"><%= article&.user&.username  %></h1>
+        <p class="text-gray-700 w-full ml-1 m-auto w-fit break-words"><%= article.body %></p><br>
+        <p class="font-bold text-xl mb-2 w-full" >Comments : </p>
+        <% article.comments.each do |comment| %>
+          <% unless comment.archived? %>
+            <p ><strong>Commenter:  </strong><%= comment.user.username %></p>
+            <p class="break-words" ><strong>Comment:  </strong><%= comment.body %></p><br>
+          <% end %> 
+        <% end %>
+      </li>
+    <% end %>
+  <% end%>
+</ul>

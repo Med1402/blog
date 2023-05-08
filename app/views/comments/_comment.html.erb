@@ -1,0 +1,21 @@
+<% unless comment.archived? %>
+  <p>
+    <strong>Comment owner :</strong>
+    
+    <%= comment.user.username %>
+  </p>
+
+  <br>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p><br>
+
+  <p class="bg-purple-300 rounded-full px-8 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+    <%= link_to "Destroy Comment", [comment.article, comment], method: :delete, data: {
+                  confirm: "Are you sure?"
+                } %><br>
+  </p><br>
+  <p> ------------------------------------------------------------------------- </p>
+<% end %>

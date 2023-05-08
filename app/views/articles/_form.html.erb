@@ -1,0 +1,41 @@
+<%= form_with model: article, local: true do |form| %>
+
+    <div class="font-bold m-auto w-fit">
+      <%= form.label :Article_title %>
+      <ul class="border-2 border-black font-bold m-auto w-fit">
+      <%= form.text_field :title %> </ul><br>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  
+    <div class="px-8 py-2 font-bold m-auto w-fit">
+      <%= form.label :Article_body %><br>
+      <ul class="border-2 border-black w-fit m-auto">
+        <%= form.text_area :body %><br>
+      </ul><br>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="rounded-full px-8 py-2 font-bold m-auto w-fit">
+      <%= form.file_field :image %><br><br>
+    </div>
+
+    <div class="px-8 py-2 font-bold m-auto w-fit">
+      <%= form.label :status %><br>
+      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %><br> 
+      <br>
+    </div>  
+
+
+    <div class="bg-purple-300 rounded-full px-8 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+      <%= form.submit %>
+      <br>
+    </div>
+    <br>
+   
+    <div class="bg-purple-300 rounded-full px-14 py-2 font-bold m-auto w-fit hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+      <%= link_to "Cancel", root_path %>
+    </div>
+<% end %>
